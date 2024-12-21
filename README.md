@@ -50,7 +50,7 @@ Setup and Installation
 
 Clone the repository:
 
-git clone https://github.com/your-username/traveltrucks-frontend.git
+git clone https://github.com/Justiceman81/travel-trucks-booking
 
 Navigate to the project directory:
 
