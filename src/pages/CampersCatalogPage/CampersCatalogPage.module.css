@@ -1,0 +1,8 @@
+.catalogPage {
+  padding-top: 48px;
+  padding-bottom: 52px;
+}
+.catalogContainer {
+  display: flex;
+  gap: 64px;
+}

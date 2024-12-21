@@ -1,0 +1,49 @@
+.box {
+  display: flex;
+  gap: 40px;
+}
+
+.list {
+  width: 631px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.boxItem {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background: #f2f4f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleAvatar {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #e44848;
+}
+
+.svg {
+  color: #f2f4f7;
+}
+
+.boxReviewer {
+  height: 44px;
+  margin: auto 0;
+}
+
+.titleReviewer {
+  font-weight: 500;
+  color: #101828;
+  margin-bottom: 4px;
+}

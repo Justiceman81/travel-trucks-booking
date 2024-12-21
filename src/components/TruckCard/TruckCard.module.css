@@ -1,0 +1,106 @@
+.cardSection {
+  display: flex;
+  gap: 24px;
+  border: 1px solid #dadde1;
+  border-radius: 20px;
+  background-color: #fff;
+  width: 888px;
+  height: 368px;
+  padding: 24px;
+}
+
+.img {
+  width: 292px;
+  height: 320px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: inherit;
+}
+
+.titleSection {
+  display: flex;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.14;
+  color: #101828;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.price {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ratingSection {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.ratingText {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #101828;
+}
+
+.reviewsText {
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}
+
+.description {
+  width: 525px;
+  display: block;
+  white-space: nowrap;
+  margin-bottom: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.equipmentSection {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  height: 104px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.equipment {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  height: 48px;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: #f2f4f7;
+  mix-blend-mode: multiply;
+  color: #101828;
+}
+.showMoreBtn {
+  border-radius: 200px;
+  border: none;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  background: #e44848;
+  padding: 16px 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+  cursor: pointer;
+  transition: all 250ms linear;
+}
+.showMoreBtn:hover,
+.showMoreBtn:focus {
+  background-color: #d84343;
+}

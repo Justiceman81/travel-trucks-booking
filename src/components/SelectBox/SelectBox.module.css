@@ -1,0 +1,35 @@
+.selectBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.selectBox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.selectBox label {
+  border: 1px solid #dadde1;
+  border-radius: 12px;
+  width: 112px;
+  height: 96px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #101828;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.selectBox input[type="checkbox"]:checked + label {
+  outline: 1px solid #e44848;
+}
