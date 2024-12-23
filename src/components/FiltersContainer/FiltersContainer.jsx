@@ -3,7 +3,7 @@ import styles from "./FiltersContainer.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import clsx from "clsx";
 
-const FilterContainer = () => {
+const FiltersContainer = () => {
   return (
     <>
       <form className={styles.filterContainer}>
@@ -82,4 +82,4 @@ const FilterContainer = () => {
   );
 };
 
-export default FilterContainer;
+export default FiltersContainer;

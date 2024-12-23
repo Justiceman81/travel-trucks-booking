@@ -20,6 +20,11 @@ const TruckCard = ({ item }) => {
     const [country, city] = location.split(", ");
     return `${city}, ${country}`;
   };
+
+  const currentNumber = (number) => {
+    return number.toFixed(2);
+  };
+
   return (
     <>
       <div className={styles.cardSection}>
@@ -32,7 +37,7 @@ const TruckCard = ({ item }) => {
           <div className={styles.titleSection}>
             <h3 className={styles.title}>{item.name}</h3>
             <div className={styles.price}>
-              <p>&euro;{item.price}</p>
+              <p>&euro;{currentNumber(item.price)} </p>
               <svg
                 className={clsx(`${styles.svg} ${isLike ? styles.like : ""}`)}
                 width={24}
