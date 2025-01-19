@@ -1,57 +1,101 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCampers, getCampersById } from "./operations.js";
+import { getCampers, getCamperById, getLocations } from "./operations";
 
-const INITIAL_STATE = {
+const initialState = {
+  total: 0,
   items: [],
-  isLoading: false,
+  favoriteCampers: [],
+  currentCamper: null,
+  filters: {}, // Додаємо фільтри в стейт
+  uniqueLocations: [],
+  loading: false,
   error: null,
-  likes: JSON.parse(localStorage.getItem("likes")) || [],
+  page: 1, // Поточна сторінка
 };
 
 const campersSlice = createSlice({
   name: "campers",
-  initialState: INITIAL_STATE,
+  initialState,
   reducers: {
-    toggleLike: (state, action) => {
-      const id = action.payload;
-      const isLike = state.likes.includes(id);
-      if (isLike) {
-        state.likes = state.likes.filter((likeId) => likeId !== id);
+    clearCampers: (state) => {
+      state.items = [];
+      state.total = 0;
+    },
+    setFilters: (state, action) => {
+      state.filters = action.payload; // Оновлюємо фільтри
+    },
+    setPage: (state, action) => {
+      state.page = action.payload; // Оновлюємо сторінку
+    },
+    resetPage: (state) => {
+      state.page = 1;
+    },
+    toggleFavorite: (state, action) => {
+      const camperId = action.payload;
+      if (!state.favoriteCampers.includes(camperId)) {
+        state.favoriteCampers.push(camperId); // Додаємо до улюблених
       } else {
-        state.likes.push(id);
+        state.favoriteCampers = state.favoriteCampers.filter(
+          (id) => id !== camperId
+        ); // Якщо вже є, видаляємо
       }
-      localStorage.setItem("likes", JSON.stringify(state.likes));
     },
   },
   extraReducers: (builder) =>
     builder
       .addCase(getCampers.pending, (state) => {
-        state.isLoading = true;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
+        const { items, total } = action.payload;
+        state.loading = false;
+        state.total = total;
+        const uniqueItems = items.filter(
+          (item) =>
+            !state.items.some((existingItem) => existingItem.id === item.id)
+        );
+        state.items = [...state.items, ...uniqueItems];
       })
       .addCase(getCampers.rejected, (state, action) => {
-        state.isLoading = false;
+        state.loading = false;
         state.error = action.payload;
       })
-      .addCase(getCampersById.pending, (state) => {
-        state.isLoading = true;
+      .addCase(getCamperById.pending, (state) => {
+        state.loading = true;
         state.error = null;
       })
-      .addCase(getCampersById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
+      .addCase(getCamperById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentCamper = action.payload;
       })
-      .addCase(getCampersById.rejected, (state, action) => {
-        state.isLoading = false;
+      .addCase(getCamperById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getLocations.pending, (state) => {
+        // state.loading = true;
+        state.error = null;
+      })
+      .addCase(getLocations.fulfilled, (state, action) => {
+        // state.loading = false;
+        const uniqueLocations = [
+          ...new Set(action.payload.map((item) => item.location)),
+        ];
+        state.uniqueLocations = uniqueLocations;
+      })
+      .addCase(getLocations.rejected, (state, action) => {
+        // state.loading = false;
         state.error = action.payload;
       }),
 });
 
-export const { toggleLike } = campersSlice.actions;
-
+export const {
+  setFilters,
+  clearCampers,
+  setPage,
+  toggleFavorite,
+  setLocations,
+  resetPage,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

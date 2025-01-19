@@ -1,4 +1,4 @@
-.filterContainer {
+/* .filterContainer {
   width: 360px;
 }
 
@@ -64,10 +64,15 @@
 .boxCheck {
   margin-bottom: 40px;
 }
-
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+}
 .searchBtn {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 20px;
   border-radius: 200px;
   border: none;
   height: 56px;
@@ -86,3 +91,24 @@
 .searchBtn:focus {
   background-color: #d84343;
 }
+.resetBtn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 200px;
+  border: none;
+  height: 56px;
+  padding: 19px 54px;
+  background-color: gray;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+  cursor: pointer;
+  transition: all 250ms linear;
+}
+
+.resetBtn:hover,
+.resetBtn:focus {
+  background-color: black;
+} */

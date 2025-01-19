@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getCampersById } from "../../redux/campers/operations.js";
+import { getCamperById } from "../../redux/campers/operations.js";
 import { selectCampers } from "../../redux/campers/selectors.js";
 import { Container } from "../../components/Container/Container";
 import styles from "./CampersDetailsPage.module.css";
@@ -16,7 +16,7 @@ const CampersDetailsPage = () => {
   const camper = useSelector(selectCampers);
 
   useEffect(() => {
-    dispatch(getCampersById(id));
+    dispatch(getCamperById(id));
   }, [id, dispatch]);
 
   const gallery = camper.gallery;
